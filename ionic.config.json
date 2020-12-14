@@ -1,0 +1,7 @@
+{
+  "name": "UASLAB_Ilyas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
