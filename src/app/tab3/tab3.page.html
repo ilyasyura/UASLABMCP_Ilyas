@@ -18,6 +18,26 @@
         <h1><ion-text class="name-profile ion-text-center" > {{ user?.nama }} </ion-text></h1>
       </ion-col>
     </ion-row>
+
+    <ion-row class="ion-padding-top">
+      <ion-col>
+        <ion-card>
+          <ion-list *ngFor="let c of checkin">
+            <ion-item>
+              <p>{{user.nama}} checked in at {{c.position}} on {{c.time}}</p>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding-top">
+      <ion-col>
+        <h3>Kesan & Pesan</h3>
+        <p>Kelas mobile? Rasanya? Ah, mantab!</p><br>
+        <p>pipipipip calon mantu. HEHE</p>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
 

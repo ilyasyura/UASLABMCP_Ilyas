@@ -34,4 +34,8 @@ export class FriendService {
       email: friendEmail
     });
   }
+
+  deleteFriend(userId: string, friendId: string): Promise <void> {
+    return this.friendRef.remove(userId + '/' + friendId);
+  }
 }

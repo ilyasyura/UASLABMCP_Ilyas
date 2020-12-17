@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { FriendService } from '../services/friend.service';
 import { UserService } from '../services/user.service';
 import { debounceTime, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -20,11 +21,13 @@ export class Tab1Page {
   userFriend = [];
   userList = [];
   resetFriend = [];
+  delFriend: any;
 
   constructor(
     private authSrv: AuthService,
     private friendSrv: FriendService,
-    private userSrv: UserService
+    private userSrv: UserService,
+    private router: Router
   ) {
     this.searchControl = new FormControl();
   }
@@ -76,6 +79,8 @@ export class Tab1Page {
             //this.compareData(this.friend.length, this.userData.length);
           });
         });
+      }else {
+        this.router.navigateByUrl('/login');
       }
     })
   }
@@ -85,6 +90,24 @@ export class Tab1Page {
     this.friendList = this.friendList.filter(item => {
       return item.nama.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     })
+  }
+
+  deleteFriend(friendEmail: string){
+    console.log(friendEmail, this.userId);
+    this.friendSrv.getAllFriend(this.userId).snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
+        )
+    ).subscribe(data => {
+      this.delFriend = data;
+      for(let i = 0; i < this.delFriend.length; i++){
+        if(friendEmail == this.delFriend[i].email){
+          console.log(this.userId, this.delFriend[i].key);
+          this.friendSrv.deleteFriend(this.userId, this.delFriend[i].key);
+          window.location.reload();
+        }
+      }
+    });
   }
 
   ionViewWillEnter(){
