@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page,
+  },
+  {
+    path: 'addfriend',
+    loadChildren: () => import('./addfriend/addfriend.module').then( m => m.AddfriendPageModule)
   }
 ];
 

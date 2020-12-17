@@ -1,17 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Profile
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-grid style="text-align: center;">
+    <ion-row>
+      <ion-col>
+        <img class="profile-pic" src= "{{ user?.foto }}">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1><ion-text class="name-profile ion-text-center" > {{ user?.nama }} </ion-text></h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="logout()" expand="block">Log out</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
