@@ -112,7 +112,7 @@ export class Tab2Page implements OnInit{
               let j = 0;
               for(let i = 0; i < this.userList.length;){
                 if(this.userList[i].email == this.userFriend[j].email){
-                  this.friendList[j] = this.userData[j];
+                  this.friendList[j] = this.userData[i];
                   const posFriend = {
                     lat: this.friendList[j].lat,
                     lng: this.friendList[j].lng

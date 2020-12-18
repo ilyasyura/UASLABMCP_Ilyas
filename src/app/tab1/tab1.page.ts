@@ -59,8 +59,8 @@ export class Tab1Page {
             for(let i = 0; i < this.userList.length;){
               if(this.userList[i].email == this.userFriend[j].email){
                 console.log('sama');
-                this.friendList[j] = this.userData[j];
-                this.resetFriend[j] = this.userData[j];
+                this.friendList[j] = this.userList[i];
+                this.resetFriend[j] = this.userList[i];
                 console.log(this.friendList[j]);
                 i=0;
                 j++;
