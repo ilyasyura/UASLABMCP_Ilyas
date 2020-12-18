@@ -36,7 +36,9 @@ export class Tab3Page {
             changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
             )
         ).subscribe(data => {
-          this.checkin = data;
+          this.checkin = data.reverse();
+          console.log(this.checkin);
+          // this.checkin.sort((a,b) => a.)
         })
       } else {
         this.router.navigateByUrl('/login');
